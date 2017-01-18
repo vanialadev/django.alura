@@ -3,14 +3,14 @@ from models import Perfil
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'perfis': Perfil.objects.all()})
 
 
 def exibir(request, perfil_id):
-    perfil = Perfil()
-    if perfil_id == '1':
-        perfil = Perfil('Flavio Almeida', 'xxxxxxx', '777777', 'Caelum')
-    if perfil_id == '2':
-        perfil = Perfil('Romulo Henrique', 'R@R.com', '888888', 'Caelum')
+    perfil = Perfil.objects.get(id=perfil_id)
 
     return render(request, 'perfil.html', {"perfil": perfil})
+
+def convidar(request, perfil_id):
+    pass
+

@@ -1,0 +1,15 @@
+python manage.py makemigrations - propagar as mudancas no omdelo no banc de dados
+python manage.py migrate - popular pra aparecer dentro do sqlite - banco criado
+python manage.py shell - pra usaro bd no shell
+python manage.py runserver
+
+1)migrate -> Executar as Migrations que ainda não foram executadas;
+
+2)makemigration -> Usada para gerar uma Migration a partir das modificações no modelos;
+
+3)sqlmigrate -> Exibir o SQL que será gerado por uma Migration;
+
+python manage.py sqlmigrate perfis 0001_initial
+>>> perfil_encontrado = Perfil.objects.get(id=1)
+>>> perfil_encontrado.save()
+
