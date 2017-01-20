@@ -2,6 +2,7 @@ python manage.py makemigrations - propagar as mudancas no omdelo no banc de dado
 python manage.py migrate - popular pra aparecer dentro do sqlite - banco criado
 python manage.py shell - pra usaro bd no shell
 python manage.py runserver
+python manage.py flush - apagar o bd
 
 1)migrate -> Executar as Migrations que ainda não foram executadas;
 
@@ -15,3 +16,4 @@ python manage.py sqlmigrate perfis 0001_initial
 
 python manage.py startapp usuarios - criar um aplicacao no connectedin
 vai em settings e regista o app no INSTALLED_APPS
+sudo lsof -t -i tcp:8000 | xargs kill -9 - quando der erro na porta no runserver
