@@ -13,3 +13,5 @@ python manage.py sqlmigrate perfis 0001_initial
 >>> perfil_encontrado = Perfil.objects.get(id=1)
 >>> perfil_encontrado.save()
 
+python manage.py startapp usuarios - criar um aplicacao no connectedin
+vai em settings e regista o app no INSTALLED_APPS
