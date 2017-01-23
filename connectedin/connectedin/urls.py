@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.conf import settings
+from django.template.response import TemplateResponse
 
 urlpatterns = patterns('',
                        # Examples:
@@ -9,5 +11,8 @@ urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^', include('perfis.urls')),
                        url(r'^', include('usuarios.urls'))
+)
 
-                       )
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^', TemplateResponse, {'template': '404.html'}))
