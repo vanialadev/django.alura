@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.template import loader
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponseForbidden
@@ -13,7 +14,10 @@ def index(request):
     print request.user.email
     print request.user.has_perm('perfis.add_convite')
     if not request.user.has_perm('perfis.add_convite'):
-        return HttpResponseForbidden('Acesso negado')
+        return render(request, 'template_com_msg_de_erro.html')
+        # return HttpResponseForbidden('Acesso negado')
+        # return render(request, 'template_com_msg_de_erro.html')
+
     return render(request, 'index.html', {'perfis': Perfil.objects.all(), 'perfil_logado': get_perfil_logado(request)})
 
 
@@ -25,7 +29,7 @@ def exibir(request, perfil_id):
     return render(request, 'perfil.html', {"perfil": perfil, "perfil_logado": get_perfil_logado(request), 'ja_eh_contato': ja_eh_contato})
 
 
-@permission_required('perfis.add_convite', raise_exception=True)
+permission_required('perfis.add_convite', raise_exception=True)
 @login_required
 def convidar(request, perfil_id):
     perfil_a_convidar = Perfil.objects.get(id=perfil_id)
